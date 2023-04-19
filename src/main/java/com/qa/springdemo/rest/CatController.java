@@ -6,9 +6,10 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.springdemo.rest.domain.Cat;
-
+@RestController
 public class CatController {
 
     List<Cat> catList = new ArrayList<Cat>();
@@ -22,5 +23,11 @@ public class CatController {
     public Cat createCat(@RequestBody Cat e) {
         this.catList.add(e);
         return this.catList.get(catList.size() - 1);
+    }
+
+    @GetMapping("/getAll")
+    public List<Cat> getAll()
+    {
+        return catList;
     }
 }
