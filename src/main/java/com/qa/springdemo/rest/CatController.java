@@ -1,10 +1,5 @@
 package com.qa.springdemo.rest;
 
-import com.qa.springdemo.rest.domain.Cat;
-import com.qa.springdemo.service.CatService;
-import com.qa.springdemo.service.CatServiceList;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -17,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.qa.springdemo.rest.domain.Cat;
+import com.qa.springdemo.service.CatService;
 
 @RestController
 public class CatController {
