@@ -3,8 +3,11 @@ package com.qa.springdemo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.qa.springdemo.rest.domain.Cat;
 
+@Service
 public class CatServiceList implements CatService {
 
     List<Cat> catList = new ArrayList<Cat>();
