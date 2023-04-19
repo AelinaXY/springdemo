@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CatController {
 
-    CatService service = new CatServiceList();
+    CatService service;
     
     public CatController(CatService service) {
         this.service = service;
