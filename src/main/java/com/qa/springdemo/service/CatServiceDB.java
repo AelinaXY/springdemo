@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import com.qa.springdemo.exception.CatNotFoundException;
 import com.qa.springdemo.repo.CatRepo;
 import com.qa.springdemo.rest.domain.Cat;
 
@@ -30,7 +31,7 @@ public class CatServiceDB implements CatService {
 
     @Override
     public Cat get(int id) {
-        return this.repo.findById(Long.valueOf(id)).get();
+        return this.repo.findById(Long.valueOf(id)).orElseThrow(CatNotFoundException::new);
     }
 
     @Override

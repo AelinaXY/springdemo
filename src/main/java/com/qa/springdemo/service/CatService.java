@@ -2,8 +2,11 @@ package com.qa.springdemo.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.qa.springdemo.rest.domain.Cat;
 
+@Service
 public interface CatService {
 
     public Cat createCat(Cat cat);
