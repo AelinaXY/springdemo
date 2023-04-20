@@ -26,19 +26,16 @@ public class CatServiceDBTest {
     @MockBean
     private CatRepo repo;
 
-
     @Test
-    void testUpdate()
-    {
+    void testUpdate() {
         Long id = 1L;
         Mockito.when(this.repo.findById(id))
-        .thenReturn(Optional.of(new Cat(false, false, null, 1, id)));
-        
+                .thenReturn(Optional.of(new Cat(false, false, null, 1, id)));
+
         Mockito.when(this.repo.save(new Cat(false, true, null, 1, id)))
-        .thenReturn(new Cat(false, true, null, 1, id));
+                .thenReturn(new Cat(false, true, null, 1, id));
 
-
-        assertEquals( new Cat(false, true, null, 1, id), service.updateCat(1, false, true, null, 1));
+        assertEquals(new Cat(false, true, null, 1, id), service.updateCat(1, false, true, null, 1));
 
         Mockito.verify(repo, Mockito.times(1)).findById(id);
         Mockito.verify(repo, Mockito.times(1)).save(new Cat(false, true, null, 1, id));
@@ -46,14 +43,12 @@ public class CatServiceDBTest {
     }
 
     @Test
-    void testCreateCat()
-    {
+    void testCreateCat() {
         Long id = 1L;
-        
+
         Cat catCat = new Cat(false, true, null, 1, id);
         Mockito.when(this.repo.save(catCat))
-        .thenReturn(catCat);
-
+                .thenReturn(catCat);
 
         assertEquals(catCat, service.createCat(catCat));
 
@@ -62,16 +57,14 @@ public class CatServiceDBTest {
     }
 
     @Test
-    void testUpdateCat()
-    {
+    void testGetAll() {
         Long id = 1L;
-        
+
         Cat catCat = new Cat(false, true, null, 1, id);
         List<Cat> catList = new ArrayList<Cat>();
         catList.add(catCat);
         Mockito.when(this.repo.findAll())
-        .thenReturn(catList);
-
+                .thenReturn(catList);
 
         assertEquals(catList, service.getAll());
 
@@ -80,15 +73,13 @@ public class CatServiceDBTest {
     }
 
     @Test
-    void testGet()
-    {
+    void testGet() {
         Long id = 1L;
-        int intId =1;
-        
+        int intId = 1;
+
         Cat catCat = new Cat(false, true, null, 1, id);
         Mockito.when(this.repo.findById(id))
-        .thenReturn(Optional.of(catCat));
-
+                .thenReturn(Optional.of(catCat));
 
         assertEquals(catCat, service.get(intId));
 
@@ -97,21 +88,18 @@ public class CatServiceDBTest {
     }
 
     @Test
-    void testRemove()
-    {
+    void testRemove() {
         Long id = 1L;
-        int intId =1;
-        
+        int intId = 1;
+
         Cat catCat = new Cat(false, true, null, 1, id);
         Mockito.when(this.repo.findById(id))
-        .thenReturn(Optional.of(catCat));
-
+                .thenReturn(Optional.of(catCat));
 
         assertEquals(catCat, service.remove(intId));
 
         Mockito.verify(repo, Mockito.times(1)).findById(id);
 
     }
-
 
 }
