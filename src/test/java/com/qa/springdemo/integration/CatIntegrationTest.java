@@ -27,7 +27,7 @@ import com.qa.springdemo.rest.domain.Cat;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:cat-schema.sql", "classpath:cat-data.sql" })
-public class CatIntegrationTest{
+public class CatIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
@@ -67,6 +67,7 @@ public class CatIntegrationTest{
         ResultMatcher checkBody = content().json(resultCatAsJson);
         this.mvc.perform(req).andExpect(checkResultMatcher).andExpect(checkBody);
     }
+
     @Test
     void testGetAll() throws Exception {
         RequestBuilder req = get("/getAll");
@@ -95,10 +96,10 @@ public class CatIntegrationTest{
     void testUpdate() throws Exception {
         int catId = 1;
         RequestBuilder req = patch("/update/" + catId)
-        .param("evil", "false")
-        .param("hasWhiskers", "false")
-        .param("name","testName")
-        .param("length","67");
+                .param("evil", "false")
+                .param("hasWhiskers", "false")
+                .param("name", "testName")
+                .param("length", "67");
 
         ResultMatcher checkResultMatcher = status().isOk();
         Cat resultCat = new Cat(false, false, "testName", 67, 1L);
@@ -115,5 +116,5 @@ public class CatIntegrationTest{
         ResultMatcher checkResultMatcher = status().isNotFound();
         this.mvc.perform(req).andExpect(checkResultMatcher);
     }
-    
+
 }
