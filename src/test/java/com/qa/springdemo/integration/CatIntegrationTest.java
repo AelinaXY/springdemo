@@ -107,18 +107,6 @@ public class CatIntegrationTest{
         this.mvc.perform(req).andExpect(checkResultMatcher).andExpect(checkBody);
     }
 
-    // @Test
-    // void testUpdateMap() throws Exception {
-    //     int catId = 1;
-    //     RequestBuilder req = patch("/update/" + catId).params("evil", "false").param("hasWhiskers", "false").param("name","testName").param("length","67");
-
-    //     ResultMatcher checkResultMatcher = status().isOk();
-    //     Cat resultCat = new Cat(false, false, "testName", 67, 1L);
-    //     String resultCatAsJson = mapper.writeValueAsString(resultCat);
-    //     ResultMatcher checkBody = content().json(resultCatAsJson);
-    //     this.mvc.perform(req).andExpect(checkResultMatcher).andExpect(checkBody);
-    // }
-
     @Test
     void testNotFound() throws Exception {
         int catId = 2;
